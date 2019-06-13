@@ -4,22 +4,22 @@ import * as SerialPort from 'serialport';
 
 type UninstallHandler = () => void;
 
+export interface Device {
+  name: string;
+}
+
 export interface Transport {
   connect: (portName: string) => Promise<void>;
   disconnect: () => Promise<void>;
   write: (bytes: string) => Promise<any>;
   discover: () => Promise<Device[]>;
-  data$: Observable<{}>;
-  event$: Observable<{}>;
+  data$: Observable<unknown>;
+  event$: Observable<unknown>;
   connected: boolean;
 }
 
 interface TransportCreationOptions {
   debugEnabled?: boolean;
-}
-
-export interface Device {
-  name: string;
 }
 
 export function createTransport(options?: TransportCreationOptions): Transport {

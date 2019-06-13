@@ -12,10 +12,7 @@ export default function createQueryIdentificationHandler(
     type: 'QUERY_IDENTIFICATION',
     handle: ({ type }: DomainCommand) => {
       debug(`running ${type} command handler...`);
-
-      const command = driver.buildQueryIdentificationCommand();
-
-      return runCommand(command);
+      return runCommand(driver.buildQueryIdentificationCommand());
     }
   };
 }

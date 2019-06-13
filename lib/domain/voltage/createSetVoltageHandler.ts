@@ -14,9 +14,7 @@ export default function createSetVoltageHandler(
       debug(`running ${type} command handler...`);
 
       const { voltage } = payload;
-      const command = driver.buildSetVoltageCommand(voltage);
-
-      return runCommand(command);
+      return runCommand(driver.buildSetVoltageCommand(voltage));
     }
   };
 }

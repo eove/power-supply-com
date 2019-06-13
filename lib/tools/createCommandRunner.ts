@@ -56,7 +56,7 @@ export function createCommandRunner(
         return { remaining, answers };
       },
       {
-        remaining: [],
+        remaining: '',
         answers: []
       }
     ),
@@ -86,17 +86,19 @@ export function createCommandRunner(
     const { raw, answerTimeoutMS } = cmd;
     return commandQueue.enqueue(() => {
       commandSource.next(cmd);
-      const answer = waitAnswer();
+      const answer = waitAnswer(cmd);
       return transport.write(raw).then(() => answer);
     });
 
-    function waitAnswer() {
-      return commandAnswer$()
-        .pipe(
-          timeout(answerTimeoutMS),
-          catchError(error => throwError(error))
-        )
-        .toPromise();
+    function waitAnswer(currentCmd: DriverCommand) {
+      return currentCmd.isAnswerExpected
+        ? commandAnswer$()
+            .pipe(
+              timeout(answerTimeoutMS),
+              catchError(error => throwError(error))
+            )
+            .toPromise()
+        : Promise.resolve();
 
       function commandAnswer$() {
         return answer$.pipe(

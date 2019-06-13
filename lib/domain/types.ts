@@ -12,13 +12,13 @@ export interface DriverAnswer {
 
 export interface FindAnswersResult {
   answers: DriverAnswer[];
-  remaining: string[];
+  remaining: string;
 }
 
 export interface Driver {
   buildSetVoltageCommand: (voltage: number) => DriverCommand;
   buildQueryIdentificationCommand: () => DriverCommand;
-  findAnswers: (data: string[]) => FindAnswersResult;
+  findAnswers: (data: string) => FindAnswersResult;
 }
 
 type DomainCommandPayload = any;
