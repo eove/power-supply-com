@@ -36,21 +36,21 @@
   "homepage": "https://github.com/eove/power-supply-com#readme",
   "devDependencies": {
     "@types/debug": "4.1.4",
-    "@types/jest": "24.0.13",
-    "@types/lodash": "4.14.132",
-    "@types/node": "12.0.3",
+    "@types/jest": "24.0.14",
+    "@types/lodash": "4.14.134",
+    "@types/node": "12.0.8",
     "@types/rx": "4.1.1",
     "@types/serialport": "7.0.3",
-    "@types/sinon": "7.0.12",
+    "@types/sinon": "7.0.13",
     "jest": "24.8.0",
     "npm-run-all": "4.1.5",
-    "prettier": "1.17.1",
+    "prettier": "1.18.2",
     "sinon": "7.3.2",
     "ts-jest": "24.0.2",
     "ts-node": "8.2.0",
-    "tslint": "5.16.0",
+    "tslint": "5.17.0",
     "tslint-config-prettier": "1.18.0",
-    "typescript": "3.4.5"
+    "typescript": "3.5.1"
   },
   "jest": {
     "transform": {
