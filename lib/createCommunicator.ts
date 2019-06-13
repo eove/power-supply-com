@@ -2,10 +2,10 @@ import * as debugLib from 'debug';
 import * as _ from 'lodash';
 import { merge, Observable, Subject } from 'rxjs';
 
+import { createDriver } from './devices';
 import { DomainCommand } from './domain';
 import { commandHandlerFactories } from './domain';
 import { createCommandRunner, createTransport, Device } from './tools';
-import { createDriver } from './devices';
 
 export interface Communicator {
   open: (portName: string) => Promise<void>;

@@ -13,14 +13,14 @@ import {
   timeout
 } from 'rxjs/operators';
 
+import { Driver, FindAnswersResult } from '../devices';
 import {
-  DriverCommand,
   DomainCommand,
   DomainCommandHandlerFactory,
-  DriverAnswer
+  DriverAnswer,
+  DriverCommand
 } from '../domain';
 import { Transport } from './createTransport';
-import { Driver, FindAnswersResult } from '../devices';
 
 interface CommandRunner {
   postCommand: (cmd: DomainCommand) => Promise<{}>;
