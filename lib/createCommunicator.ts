@@ -13,9 +13,9 @@ export interface Communicator {
   listPorts: () => Promise<Device[]>;
   sendCommand: (command: DomainCommand) => Promise<{}>;
   request: (commandType: string, args: any) => Promise<{}>;
-  data$: Observable<{}>;
+  data$: Observable<unknown>;
   event$: Observable<unknown>;
-  answer$: Observable<{}>;
+  answer$: Observable<unknown>;
   command$: Observable<unknown>;
 }
 
@@ -75,14 +75,17 @@ export function createCommunicator(
   };
 
   function open(portName: string): Promise<void> {
-    return transport.connect(portName).then(() => {
-      _sendEvent({
-        type: 'COMMUNICATION_STARTED',
-        payload: {
-          portName
-        }
-      });
-    });
+    return transport.connect(portName).then(result =>
+      sendCommand({ type: 'INITIALIZE' }).then(() => {
+        _sendEvent({
+          type: 'COMMUNICATION_STARTED',
+          payload: {
+            portName
+          }
+        });
+        return result;
+      })
+    );
   }
 
   function close(): Promise<void> {
