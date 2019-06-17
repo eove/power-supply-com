@@ -51,7 +51,7 @@ export function createTransport(options?: TransportCreationOptions): Transport {
     if (isConnected) {
       return Promise.reject(new Error('already connected'));
     }
-    const baudRate = 19200;
+    const baudRate = 115200;
     port = new SerialPort(portName, { autoOpen: false, baudRate });
     uninstallPortListeners = installPortListeners();
     debug(`connecting to: ${portName}, baud rate: ${baudRate}`);
@@ -125,8 +125,7 @@ export function createTransport(options?: TransportCreationOptions): Transport {
   }
 
   function write(bytes: string): Promise<any> {
-    const escapedBytes = bytes.replace('\r', '\\r');
-    debug(`sending: ${escapedBytes}`);
+    debug(`sending: ${bytes}`);
     return new Promise((resolve, reject) => {
       port.write(Buffer.from(bytes), writeError => {
         if (writeError) {
@@ -142,7 +141,7 @@ export function createTransport(options?: TransportCreationOptions): Transport {
               );
               reject(err);
             } else {
-              debug(`wrote: ${escapedBytes}`);
+              debug(`wrote: ${bytes}`);
               resolve();
             }
           });
