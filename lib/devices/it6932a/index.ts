@@ -1,13 +1,13 @@
 import { Driver } from '../../domain';
 
+import buildDisableOutputCommand from './buildDisableOutputCommand';
+import buildEnableOutputCommand from './buildEnableOutputCommand';
+import buildGetCurrentCommand from './buildGetCurrentCommand';
+import buildGetVoltageCommand from './buildGetVoltageCommand';
 import buildInitializeCommand from './buildInitializeCommand';
 import buildQueryIdentificationCommand from './buildQueryIdentificationCommand';
-import buildEnableOutputCommand from './buildEnableOutputCommand';
-import buildDisableOutputCommand from './buildDisableOutputCommand';
-import buildGetVoltageCommand from './buildGetVoltageCommand';
-import buildSetVoltageCommand from './buildSetVoltageCommand';
-import buildGetCurrentCommand from './buildGetCurrentCommand';
 import buildSetCurrentCommand from './buildSetCurrentCommand';
+import buildSetVoltageCommand from './buildSetVoltageCommand';
 import findAnswers from './findAnswers';
 
 export function createIT6932ADriver(): Driver {

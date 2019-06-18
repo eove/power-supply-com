@@ -1,10 +1,10 @@
 import { DomainCommandHandlerFactory } from '../types';
-import createEnableOutputHandler from './createEnableOutputHandler';
 import createDisableOutputHandler from './createDisableOutputHandler';
-import createGetVoltageHandler from './createGetVoltageHandler';
-import createSetVoltageHandler from './createSetVoltageHandler';
+import createEnableOutputHandler from './createEnableOutputHandler';
 import createGetCurrentHandler from './createGetCurrentHandler';
+import createGetVoltageHandler from './createGetVoltageHandler';
 import createSetCurrentHandler from './createSetCurrentHandler';
+import createSetVoltageHandler from './createSetVoltageHandler';
 
 export const factories: DomainCommandHandlerFactory[] = [
   createEnableOutputHandler,
