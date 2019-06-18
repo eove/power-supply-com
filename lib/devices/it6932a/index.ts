@@ -5,6 +5,8 @@ import buildEnableOutputCommand from './buildEnableOutputCommand';
 import buildGetCurrentCommand from './buildGetCurrentCommand';
 import buildGetVoltageCommand from './buildGetVoltageCommand';
 import buildInitializeCommand from './buildInitializeCommand';
+import buildMeasureCurrentCommand from './buildMeasureCurrentCommand';
+import buildMeasureVoltageCommand from './buildMeasureVoltageCommand';
 import buildQueryIdentificationCommand from './buildQueryIdentificationCommand';
 import buildSetCurrentCommand from './buildSetCurrentCommand';
 import buildSetVoltageCommand from './buildSetVoltageCommand';
@@ -20,6 +22,8 @@ export function createIT6932ADriver(): Driver {
     buildSetVoltageCommand,
     buildGetCurrentCommand,
     buildSetCurrentCommand,
+    buildMeasureVoltageCommand,
+    buildMeasureCurrentCommand,
     findAnswers
   };
 }

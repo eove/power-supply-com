@@ -23,6 +23,8 @@ export interface Driver {
   buildGetVoltageCommand: () => DriverCommand;
   buildSetCurrentCommand: (current: number) => DriverCommand;
   buildGetCurrentCommand: () => DriverCommand;
+  buildMeasureVoltageCommand: () => DriverCommand;
+  buildMeasureCurrentCommand: () => DriverCommand;
   buildQueryIdentificationCommand: () => DriverCommand;
   findAnswers: (data: string) => FindAnswersResult;
 }

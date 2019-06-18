@@ -47,7 +47,8 @@ export function createCommunicator(
     debug,
     handlerFactories: [
       ...commandHandlerFactories.common,
-      ...commandHandlerFactories.output
+      ...commandHandlerFactories.output,
+      ...commandHandlerFactories.measurements
     ],
     data$: transport.data$,
     transport
