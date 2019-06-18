@@ -12,12 +12,12 @@ describe('it6932a driver - build "Set Voltage" Command', () => {
   it('should fire an error when voltage is too high', () => {
     expect(() => {
       buildSetVoltageCommand(99);
-    }).toThrow(/max voltage is: 60v/);
+    }).toThrow(/max voltage is: 60V/);
   });
 
   it('should fire an error when voltage is too low', () => {
     expect(() => {
       buildSetVoltageCommand(-2);
-    }).toThrow(/min voltage is: 0v/);
+    }).toThrow(/min voltage is: 0V/);
   });
 });

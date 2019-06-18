@@ -33,8 +33,7 @@ export function createCommunicator(
     options,
     {
       debugEnabled: false,
-      transportDebugEnabled: false,
-      rs232echoOn: false
+      transportDebugEnabled: false
     }
   );
   debug.enabled = debugEnabled;
@@ -48,7 +47,7 @@ export function createCommunicator(
     debug,
     handlerFactories: [
       ...commandHandlerFactories.common,
-      ...commandHandlerFactories.voltage
+      ...commandHandlerFactories.output
     ],
     data$: transport.data$,
     transport

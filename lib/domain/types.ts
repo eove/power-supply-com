@@ -17,7 +17,12 @@ export interface FindAnswersResult {
 
 export interface Driver {
   buildInitializeCommand: () => DriverCommand;
+  buildEnableOutputCommand: () => DriverCommand;
+  buildDisableOutputCommand: () => DriverCommand;
   buildSetVoltageCommand: (voltage: number) => DriverCommand;
+  buildGetVoltageCommand: () => DriverCommand;
+  buildSetCurrentCommand: (current: number) => DriverCommand;
+  buildGetCurrentCommand: () => DriverCommand;
   buildQueryIdentificationCommand: () => DriverCommand;
   findAnswers: (data: string) => FindAnswersResult;
 }

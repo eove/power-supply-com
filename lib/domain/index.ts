@@ -1,9 +1,9 @@
 export * from './types';
 
 import { factories as commonFactories } from './common';
-import { factories as voltageFactories } from './voltage';
+import { factories as outputFactories } from './output';
 
 export const commandHandlerFactories = {
   common: commonFactories,
-  voltage: voltageFactories
+  output: outputFactories
 };

@@ -3,11 +3,11 @@ import { MAX_VOLTAGE, MIN_VOLTAGE } from './characteristics';
 
 export default (voltage: number): DriverCommand => {
   if (voltage > MAX_VOLTAGE) {
-    throw new Error(`max voltage is: ${MAX_VOLTAGE}v`);
+    throw new Error(`max voltage is: ${MAX_VOLTAGE}V`);
   }
 
   if (voltage < MIN_VOLTAGE) {
-    throw new Error(`min voltage is: ${MIN_VOLTAGE}v`);
+    throw new Error(`min voltage is: ${MIN_VOLTAGE}V`);
   }
 
   return {
