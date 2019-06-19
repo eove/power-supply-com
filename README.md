@@ -17,9 +17,9 @@ This lib exposes a communicator which may send commands to the power supply devi
 ```js
 import { createCommunicator } from '@eove/flow-analyzer-com';
 
-const communicator = createCommunicator();
+const communicator = createCommunicator('/dev/ttyUSB0');
 
-communicator.open('/dev/ttyUSB0').then(() => {
+communicator.open().then(() => {
   return communicator
     .sendCommand({ type: 'QUERY_IDENTIFICATION' })
     .then(console.log);

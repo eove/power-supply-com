@@ -26,6 +26,7 @@ interface CommunicatiorOptions {
 }
 
 export function createCommunicator(
+  portName: string,
   options?: CommunicatiorOptions
 ): Communicator {
   const debug = debugLib('power-supply');
@@ -74,7 +75,7 @@ export function createCommunicator(
     request
   };
 
-  function open(portName: string): Promise<void> {
+  function open(): Promise<void> {
     return transport.connect(portName).then(result =>
       sendCommand({ type: 'INITIALIZE' }).then(() => {
         _sendEvent({
