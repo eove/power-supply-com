@@ -10,6 +10,7 @@ import { createCommandRunner, createTransport, Device } from './tools';
 export interface Communicator {
   open: (portName: string) => Promise<void>;
   close: () => Promise<void>;
+  isCommmunicationStarted: () => Promise<void>;
   listPorts: () => Promise<Device[]>;
   sendCommand: (command: DomainCommand) => Promise<{}>;
   request: (commandType: string, args: any) => Promise<{}>;
@@ -37,6 +38,7 @@ export function createCommunicator(
       transportDebugEnabled: false
     }
   );
+  let isComStarted = false;
   debug.enabled = debugEnabled;
   const eventSource = new Subject();
 
@@ -58,6 +60,7 @@ export function createCommunicator(
   return {
     open,
     close,
+    isCommmunicationStarted,
     listPorts,
     get data$() {
       return transport.data$;
@@ -84,6 +87,7 @@ export function createCommunicator(
             portName
           }
         });
+        isComStarted = true;
         return result;
       })
     );
@@ -92,8 +96,15 @@ export function createCommunicator(
   function close(): Promise<void> {
     return transport.disconnect().then(result => {
       _sendEvent({ type: 'COMMUNICATION_STOPPED', payload: undefined });
+      isComStarted = false;
       return result;
     });
+  }
+
+  function isCommmunicationStarted() {
+    return transport.connected && isComStarted
+      ? Promise.resolve()
+      : Promise.reject();
   }
 
   function sendCommand(command: DomainCommand): Promise<any> {
