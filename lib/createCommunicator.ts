@@ -10,7 +10,7 @@ import { createCommandRunner, createTransport, Device } from './tools';
 export interface Communicator {
   open: (portName: string) => Promise<void>;
   close: () => Promise<void>;
-  isCommmunicationStarted: () => Promise<void>;
+  isCommmunicationStarted: () => Promise<boolean>;
   listPorts: () => Promise<Device[]>;
   sendCommand: (command: DomainCommand) => Promise<{}>;
   request: (commandType: string, args: any) => Promise<{}>;
@@ -102,9 +102,7 @@ export function createCommunicator(
   }
 
   function isCommmunicationStarted() {
-    return transport.connected && isComStarted
-      ? Promise.resolve()
-      : Promise.reject();
+    return Promise.resolve(transport.connected && isComStarted);
   }
 
   function sendCommand(command: DomainCommand): Promise<any> {
