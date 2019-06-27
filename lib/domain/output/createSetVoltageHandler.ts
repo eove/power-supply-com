@@ -11,9 +11,10 @@ export default function createSetVoltageHandler(
   return {
     type: 'SET_VOLTAGE',
     handle: ({ type, payload }: DomainCommand) => {
-      debug(`running ${type} command handler...`);
-
       const { voltage } = payload;
+
+      debug(`running ${type} command handler with voltage: ${voltage}...`);
+
       return runCommand(driver.buildSetVoltageCommand(voltage));
     }
   };

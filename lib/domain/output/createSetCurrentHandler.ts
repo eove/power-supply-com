@@ -11,9 +11,10 @@ export default function createSetCurrentHandler(
   return {
     type: 'SET_CURRENT',
     handle: ({ type, payload }: DomainCommand) => {
-      debug(`running ${type} command handler...`);
-
       const { current } = payload;
+
+      debug(`running ${type} command handler with current: ${current}...`);
+
       return runCommand(driver.buildSetCurrentCommand(current));
     }
   };
