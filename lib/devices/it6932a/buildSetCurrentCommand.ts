@@ -1,5 +1,5 @@
 import { DriverCommand } from '../../domain';
-import { MAX_CURRENT, MIN_CURRENT } from './characteristics';
+import { MAX_CURRENT, MIN_CURRENT } from './properties';
 
 export default (current: number): DriverCommand => {
   if (current > MAX_CURRENT) {

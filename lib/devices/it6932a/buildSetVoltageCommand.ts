@@ -1,5 +1,5 @@
 import { DriverCommand } from '../../domain';
-import { MAX_VOLTAGE, MIN_VOLTAGE } from './characteristics';
+import { MAX_VOLTAGE, MIN_VOLTAGE } from './properties';
 
 export default (voltage: number): DriverCommand => {
   if (voltage > MAX_VOLTAGE) {
