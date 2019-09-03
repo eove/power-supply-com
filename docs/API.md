@@ -19,19 +19,27 @@ interface CommunicatiorOptions {
 
 ## open
 
-`open(): Promise<void>`
+```javascript
+open(): Promise<void>
+```
 
 ## close
 
-`close(): Promise<void>`
+```javascript
+close(): Promise<void>
+```
 
 ## listPorts
 
-`listPorts(): Promise<Device[]>`
+```javascript
+listPorts(): Promise<Device[]>
+```
 
 ## sendCommand
 
-`sendCommand({type: string, payload?: any}): Promise<{}>`
+```javascript
+sendCommand({type: string, payload?: any}): Promise<{}>
+```
 
 Sends a command to the device and returns a Promise resolving the answer.
 
