@@ -26,6 +26,8 @@ communicator.open().then(() => {
 });
 ```
 
+Here's the [API documentation](./docs/API.md)
+
 ## How to contribute?
 
 You would like a power supply device to be supported?
