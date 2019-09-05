@@ -19,11 +19,10 @@ import { createCommunicator } from '@eove/flow-analyzer-com';
 
 const communicator = createCommunicator('/dev/ttyUSB0');
 
-communicator.open().then(() => {
-  return communicator
-    .sendCommand({ type: 'QUERY_IDENTIFICATION' })
-    .then(console.log);
-});
+communicator
+  .open()
+  .then(() => communicator.sendCommand({ type: 'QUERY_IDENTIFICATION' }))
+  .then(console.log);
 ```
 
 Here's the [API documentation](./docs/API.md)
