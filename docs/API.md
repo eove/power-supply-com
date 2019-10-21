@@ -118,7 +118,7 @@ Available commands:
 }
 ```
 
-## command\$, answert\$, event\$, data\$
+## command\$, answer\$, event\$, data\$
 
 Expose [Observables](http://reactivex.io/documentation/observable.html) pushing respectively commands, answers, events and raw data.
 
