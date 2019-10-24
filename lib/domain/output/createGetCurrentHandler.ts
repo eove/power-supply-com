@@ -13,7 +13,9 @@ export default function createGetCurrentHandler(
     handle: ({ type }: DomainCommand) => {
       debug(`running ${type} command handler...`);
 
-      return runCommand(driver.buildGetCurrentCommand());
+      return runCommand(driver.buildGetCurrentCommand()).then(result => {
+        return Object.assign({}, result, { raw: Number(result.raw) });
+      });
     }
   };
 }

@@ -13,7 +13,9 @@ export default function createMeasureVoltageHandler(
     handle: ({ type }: DomainCommand) => {
       debug(`running ${type} command handler...`);
 
-      return runCommand(driver.buildMeasureVoltageCommand());
+      return runCommand(driver.buildMeasureVoltageCommand()).then(result => {
+        return Object.assign({}, result, { raw: Number(result.raw) });
+      });
     }
   };
 }

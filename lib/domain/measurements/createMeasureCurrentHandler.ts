@@ -13,7 +13,9 @@ export default function createMeasureCurrentHandler(
     handle: ({ type }: DomainCommand) => {
       debug(`running ${type} command handler...`);
 
-      return runCommand(driver.buildMeasureCurrentCommand());
+      return runCommand(driver.buildMeasureCurrentCommand()).then(result => {
+        return Object.assign({}, result, { raw: Number(result.raw) });
+      });
     }
   };
 }

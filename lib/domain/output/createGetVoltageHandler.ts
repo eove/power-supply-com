@@ -13,7 +13,9 @@ export default function createGetVoltageHandler(
     handle: ({ type }: DomainCommand) => {
       debug(`running ${type} command handler...`);
 
-      return runCommand(driver.buildGetVoltageCommand());
+      return runCommand(driver.buildGetVoltageCommand()).then(result => {
+        return Object.assign({}, result, { raw: Number(result.raw) });
+      });
     }
   };
 }
