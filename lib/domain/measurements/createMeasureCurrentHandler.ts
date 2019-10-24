@@ -1,3 +1,4 @@
+import toNumbeResult from '../toNumberResult';
 import {
   DomainCommand,
   DomainCommandHandler,
@@ -14,7 +15,9 @@ export default function createMeasureCurrentHandler(
       debug(`running ${type} command handler...`);
 
       return runCommand(driver.buildMeasureCurrentCommand()).then(result => {
-        return Object.assign({}, result, { raw: Number(result.raw) });
+        const formatted = toNumbeResult(result);
+        debug('result:', formatted);
+        return formatted;
       });
     }
   };
