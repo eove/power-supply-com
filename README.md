@@ -1,38 +1,75 @@
-# power-supply-com [![Build Status](https://travis-ci.org/eove/power-supply-com.svg?branch=master)](https://travis-ci.org/eove/power-supply-com) [![npm version](https://badge.fury.io/js/%40eove%2Fpower-supply-com.svg)](https://badge.fury.io/js/%40eove%2Fpower-supply-com) [![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)](https://github.com/prettier/prettier)
+# power-supply-com 
 
-Node.js lib to communicate with power supply devices such as ITECH `IT6932A` model through serial port.
+[![Build Status](https://github.com/eove/power-supply-com/workflows/CI/badge.svg)](https://github.com/eove/power-supply-com/actions?query=workflow%3ACI)
 
-## Supported devices
+Collection of packages to communicate with power supplies through serial port.
 
-- IT6932A
+This is a monorepository, subprojects are in [packages](/packages) directory.
 
-## Install
+## Packages
 
-`npm install`
+Available packages:
 
-## Usage
+- [power-supply-com-communicator](/packages/power-supply-com-communicator): Facade to communicate with device
+- [power-supply-com-talk](/packages/power-supply-com-talk): CLI to communicate with device
 
-This lib exposes a communicator which may send commands to the power supply device and get answers.
+## For developers
 
-```js
-import { createCommunicator } from '@eove/flow-analyzer-com';
+### Installation
 
-const communicator = createCommunicator('/dev/ttyUSB0');
+Just clone repository:
 
-communicator
-  .open()
-  .then(() => communicator.sendCommand({ type: 'QUERY_IDENTIFICATION' }))
-  .then(console.log);
+```
+git clone https://github.com/eove/javascript.git
 ```
 
-Here's the [API documentation](./docs/API.md)
+Then [bootstrap](https://github.com/lerna/lerna/tree/master/commands/bootstrap#readme) with [lerna](https://github.com/lerna/lerna):
 
-## How to contribute?
+```
+npm install
+npm run bootstrap
+```
 
-You would like a power supply device to be supported?
+### Publishing
 
-Here are the steps:
+Packges are published on:
 
-1. Find the corresponding PDF documentation and eventually add it to `./docs`
-2. Create a `./lib/devices/<your-model>` directory and implement the methods of the [Driver Interface](https://github.com/eove/power-supply-com/blob/master/lib/domain/types.ts)
-3. Send a PR for review and have fun testing!
+- [npmjs.org](https://www.npmjs.com/settings/eove/packages)
+- [github.com](https://github.com/orgs/eove/packages?repo_name=javascript)
+
+Use the following command to publish to npmjs.org:
+
+```
+npx lerna publish <version>
+```
+
+Then publish packages to github.com with:
+
+```
+npx lerna publish from-package --registry https://npm.pkg.github.com
+```
+
+### Tests
+
+To run tests:
+
+```
+npm test
+```
+
+This can be used in any package or in root directory (which will run tests in all packages).
+
+To run test in an isolated docker container:
+
+```
+DOCKER_BUILDKIT=1 docker build -f ci/Dockerfile .
+```
+
+Sometimes tests work on your computer but not on CI.
+Running tests in a container is close enough to CI and helps debug a slight variation between different envs.
+
+### Link packages to speed up feedbacks
+
+You can use `npx lerna link` to create symlinks for all packages so you can modify a dependency and use it without publishing it (or modifying your `node_modules` by hand).
+
+Beware that when you install any dependency a symlink can be broken, so run link command again if any doubt.
