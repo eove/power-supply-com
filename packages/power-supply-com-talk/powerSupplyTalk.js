@@ -2,7 +2,7 @@
 const { version } = require('./package.json');
 const program = require('commander');
 const { createCommunicator } = require('@eove/power-supply-com-communicator');
-const debug = require('debug')('talk-to-power-supply');
+const debug = require('debug')('talk-to-supply');
 
 const {
   createShellClient,
