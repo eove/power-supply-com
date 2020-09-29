@@ -73,5 +73,6 @@
     "lodash": "4.17.15",
     "rxjs": "6.5.5",
     "serialport": "7.1.5"
-  }
+  },
+  "gitHead": "d149de0b6cb1d689166efde2f570f8a9f9a24a18"
 }
