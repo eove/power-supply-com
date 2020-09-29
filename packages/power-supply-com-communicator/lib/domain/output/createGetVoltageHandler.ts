@@ -1,4 +1,4 @@
-import toNumbeResult from '../toNumberResult';
+import toNumberResult from '../toNumberResult';
 import {
   DomainCommand,
   DomainCommandHandler,
@@ -15,7 +15,7 @@ export default function createGetVoltageHandler(
       debug(`running ${type} command handler...`);
 
       return runCommand(driver.buildGetVoltageCommand()).then(result => {
-        const formatted = toNumbeResult(result);
+        const formatted = toNumberResult(result);
         debug('result:', formatted);
         return formatted;
       });
