@@ -18,8 +18,7 @@
   },
   "scripts": {
     "test": "echo \"no test specified\" && exit 0",
-    "preversion": "run-s test",
-    "postversion": "git push && git push --tags && npm publish --access=public"
+    "preversion": "run-s test"
   },
   "keywords": [
     "it6932a",
