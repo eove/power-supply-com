@@ -13,6 +13,6 @@ export default (current: number): DriverCommand => {
   return {
     raw: `CURR ${current}\n`,
     answerTimeoutMS: 3000,
-    isAnswerExpected: false
+    isAnswerExpected: false,
   };
 };

@@ -2,7 +2,7 @@ import toNumberResult from '../toNumberResult';
 import {
   DomainCommand,
   DomainCommandHandler,
-  DomainCommandHandlerFactoryDependencies
+  DomainCommandHandlerFactoryDependencies,
 } from '../types';
 
 export default function createGetCurrentHandler(
@@ -14,11 +14,11 @@ export default function createGetCurrentHandler(
     handle: ({ type }: DomainCommand) => {
       debug(`running ${type} command handler...`);
 
-      return runCommand(driver.buildGetCurrentCommand()).then(result => {
+      return runCommand(driver.buildGetCurrentCommand()).then((result) => {
         const formatted = toNumberResult(result);
         debug('result:', formatted);
         return formatted;
       });
-    }
+    },
   };
 }

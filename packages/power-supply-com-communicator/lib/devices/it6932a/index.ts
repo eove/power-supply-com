@@ -24,6 +24,6 @@ export function createIT6932ADriver(): Driver {
     buildSetCurrentCommand,
     buildMeasureVoltageCommand,
     buildMeasureCurrentCommand,
-    findAnswers
+    findAnswers,
   };
 }

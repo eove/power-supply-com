@@ -35,7 +35,7 @@ export function createCommunicator(
     options,
     {
       debugEnabled: false,
-      transportDebugEnabled: false
+      transportDebugEnabled: false,
     }
   );
   let isComStarted = false;
@@ -51,10 +51,10 @@ export function createCommunicator(
     handlerFactories: [
       ...commandHandlerFactories.common,
       ...commandHandlerFactories.output,
-      ...commandHandlerFactories.measurements
+      ...commandHandlerFactories.measurements,
     ],
     data$: transport.data$,
-    transport
+    transport,
   });
 
   return {
@@ -75,17 +75,17 @@ export function createCommunicator(
       return merge(transport.event$, eventSource.asObservable());
     },
     sendCommand,
-    request
+    request,
   };
 
   function open(): Promise<void> {
-    return transport.connect(portName).then(result =>
+    return transport.connect(portName).then((result) =>
       sendCommand({ type: 'INITIALIZE' }).then(() => {
         _sendEvent({
           type: 'COMMUNICATION_STARTED',
           payload: {
-            portName
-          }
+            portName,
+          },
         });
         isComStarted = true;
         return result;
@@ -94,7 +94,7 @@ export function createCommunicator(
   }
 
   function close(): Promise<void> {
-    return transport.disconnect().then(result => {
+    return transport.disconnect().then((result) => {
       _sendEvent({ type: 'COMMUNICATION_STOPPED', payload: undefined });
       isComStarted = false;
       return result;

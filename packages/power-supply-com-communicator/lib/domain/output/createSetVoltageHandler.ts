@@ -1,7 +1,7 @@
 import {
   DomainCommand,
   DomainCommandHandler,
-  DomainCommandHandlerFactoryDependencies
+  DomainCommandHandlerFactoryDependencies,
 } from '../types';
 
 export default function createSetVoltageHandler(
@@ -16,6 +16,6 @@ export default function createSetVoltageHandler(
       debug(`running ${type} command handler with voltage: ${voltage}...`);
 
       return runCommand(driver.buildSetVoltageCommand(voltage));
-    }
+    },
   };
 }

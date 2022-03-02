@@ -4,5 +4,5 @@ import createQueryIdentificationHandler from './createQueryIdentificationHandler
 
 export const factories: DomainCommandHandlerFactory[] = [
   createInitializeHandler,
-  createQueryIdentificationHandler
+  createQueryIdentificationHandler,
 ];

@@ -5,7 +5,7 @@ describe('it6932a driver - build "Query Identification" Command', () => {
     expect(buildQueryIdentificationCommand()).toEqual({
       raw: '*IDN?\n',
       isAnswerExpected: true,
-      answerTimeoutMS: 3000
+      answerTimeoutMS: 3000,
     });
   });
 });

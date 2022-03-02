@@ -44,7 +44,7 @@ export function createTransport(options?: TransportCreationOptions): Transport {
       return isConnected;
     },
     write,
-    discover
+    discover,
   };
 
   function connect(portName: string): Promise<void> {
@@ -57,7 +57,7 @@ export function createTransport(options?: TransportCreationOptions): Transport {
     debug(`connecting to: ${portName}, baud rate: ${baudRate}`);
 
     return new Promise((resolve, reject) => {
-      port.open(error => {
+      port.open((error) => {
         if (error) {
           const err = new Error(
             `Error when opening port ${portName} (${error.message})`
@@ -109,9 +109,9 @@ export function createTransport(options?: TransportCreationOptions): Transport {
       }
     });
 
-    function runDisconnect() {
+    function runDisconnect(): Promise<void> {
       return new Promise((resolve, reject) => {
-        port.close(error => {
+        port.close((error) => {
           if (error) {
             const err = new Error(
               `Error when disconnecting (${error.message})`
@@ -124,17 +124,17 @@ export function createTransport(options?: TransportCreationOptions): Transport {
     }
   }
 
-  function write(bytes: string): Promise<any> {
+  function write(bytes: string): Promise<void> {
     debug(`sending: ${bytes}`);
     return new Promise((resolve, reject) => {
-      port.write(Buffer.from(bytes), writeError => {
+      port.write(Buffer.from(bytes), (writeError) => {
         if (writeError) {
           const err = new Error(
             `Error when writing data (${writeError.message})`
           );
           reject(err);
         } else {
-          port.drain(flushError => {
+          port.drain((flushError) => {
             if (flushError) {
               const err = new Error(
                 `Error when flushing data (${flushError.message})`
@@ -151,18 +151,17 @@ export function createTransport(options?: TransportCreationOptions): Transport {
   }
 
   function discover(): Promise<Device[]> {
-    return new Promise((resolve, reject) => {
-      SerialPort.list((error, serialPorts) => {
-        if (error) {
-          return reject(
-            new Error(`Error when discovering ports (${error.message})`)
-          );
-        }
-        return resolve(
-          serialPorts.map((serialPort: any) => ({ name: serialPort.comName }))
+    return SerialPort.list()
+      .then((serialPorts) => {
+        return serialPorts.map((serialPort: any) => ({
+          name: serialPort.comName,
+        }));
+      })
+      .catch((error) => {
+        return Promise.reject(
+          new Error(`Error when discovering ports (${error.message})`)
         );
       });
-    });
   }
 
   function _sendEvent(event: { type: string; payload: any }) {

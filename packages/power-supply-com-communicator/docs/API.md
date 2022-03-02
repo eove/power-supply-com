@@ -53,7 +53,7 @@ const communicator = createCommunicator('/dev/ttyUSB1');
 communicator
   .open()
   .then(() => communicator.sendCommand({ type: 'QUERY_IDENTIFICATION' }))
-  .then(result => console.log(result));
+  .then((result) => console.log(result));
 ```
 
 Available commands:
@@ -118,7 +118,7 @@ Available commands:
 }
 ```
 
-## command\$, answer\$, event\$, data\$
+## command\\$, answer\\$, event\\$, data\$
 
 Expose [Observables](http://reactivex.io/documentation/observable.html) pushing respectively commands, answers, events and raw data.
 

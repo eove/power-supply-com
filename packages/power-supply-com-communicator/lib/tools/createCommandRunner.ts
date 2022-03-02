@@ -10,7 +10,7 @@ import {
   publish,
   refCount,
   scan,
-  timeout
+  timeout,
 } from 'rxjs/operators';
 
 import { Driver, FindAnswersResult } from '../devices';
@@ -18,7 +18,7 @@ import {
   DomainCommand,
   DomainCommandHandlerFactory,
   DriverAnswer,
-  DriverCommand
+  DriverCommand,
 } from '../domain';
 import { Transport } from './createTransport';
 
@@ -41,7 +41,7 @@ export function createCommandRunner(
 ): CommandRunner {
   const commandBus = createMessageBus({
     ensureAtLeastOneHandler: true,
-    exclusiveHandlers: true
+    exclusiveHandlers: true,
   });
   const { driver, data$, handlerFactories, transport, debug } = dependencies;
   const commandQueue = createQueue({ concurrency: 1 });
@@ -57,7 +57,7 @@ export function createCommandRunner(
       },
       {
         remaining: '',
-        answers: []
+        answers: [],
       }
     ),
     filter((result: FindAnswersResult) => result.answers.length !== 0),
@@ -75,7 +75,7 @@ export function createCommandRunner(
     answer$,
     get command$() {
       return commandSource.asObservable();
-    }
+    },
   };
 
   function postCommand(cmd: DomainCommand): Promise<{}> {
@@ -95,17 +95,13 @@ export function createCommandRunner(
         ? commandAnswer$()
             .pipe(
               timeout(answerTimeoutMS),
-              catchError(error => throwError(error))
+              catchError((error) => throwError(error))
             )
             .toPromise()
         : Promise.resolve();
 
       function commandAnswer$() {
-        return answer$.pipe(
-          publish(),
-          refCount(),
-          first()
-        );
+        return answer$.pipe(publish(), refCount(), first());
       }
     }
   }

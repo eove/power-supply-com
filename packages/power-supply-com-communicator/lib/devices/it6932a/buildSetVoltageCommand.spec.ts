@@ -5,7 +5,7 @@ describe('it6932a driver - build "Set Voltage" Command', () => {
     expect(buildSetVoltageCommand(23.2)).toEqual({
       raw: 'VOLT 23.2\n',
       isAnswerExpected: false,
-      answerTimeoutMS: 3000
+      answerTimeoutMS: 3000,
     });
   });
 

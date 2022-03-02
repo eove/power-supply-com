@@ -5,7 +5,7 @@ describe('it6932a driver - build "Initialize" Command', () => {
     expect(buildInitializeCommand()).toEqual({
       raw: 'SYST:REM\n',
       isAnswerExpected: false,
-      answerTimeoutMS: 3000
+      answerTimeoutMS: 3000,
     });
   });
 });

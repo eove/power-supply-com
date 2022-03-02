@@ -4,7 +4,7 @@ import { createIT6932ADriver } from './it6932a';
 export * from '../domain/types';
 
 const MAP_SUPPORTTED_DEVICES_TO_FACTORY: any = {
-  it6932a: createIT6932ADriver
+  it6932a: createIT6932ADriver,
 };
 
 export function createDriver(deviceType?: string) {

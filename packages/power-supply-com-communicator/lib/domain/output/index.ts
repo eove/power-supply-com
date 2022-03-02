@@ -12,5 +12,5 @@ export const factories: DomainCommandHandlerFactory[] = [
   createGetVoltageHandler,
   createSetVoltageHandler,
   createGetCurrentHandler,
-  createSetCurrentHandler
+  createSetCurrentHandler,
 ];

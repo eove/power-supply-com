@@ -1,7 +1,7 @@
 import {
   DomainCommand,
   DomainCommandHandler,
-  DomainCommandHandlerFactoryDependencies
+  DomainCommandHandlerFactoryDependencies,
 } from '../types';
 
 export default function createEnableOutputHandler(
@@ -14,6 +14,6 @@ export default function createEnableOutputHandler(
       debug(`running ${type} command handler...`);
 
       return runCommand(driver.buildEnableOutputCommand());
-    }
+    },
   };
 }

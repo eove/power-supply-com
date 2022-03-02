@@ -1,7 +1,7 @@
 import {
   DomainCommand,
   DomainCommandHandler,
-  DomainCommandHandlerFactoryDependencies
+  DomainCommandHandlerFactoryDependencies,
 } from '../types';
 
 export default function createSetCurrentHandler(
@@ -16,6 +16,6 @@ export default function createSetCurrentHandler(
       debug(`running ${type} command handler with current: ${current}...`);
 
       return runCommand(driver.buildSetCurrentCommand(current));
-    }
+    },
   };
 }

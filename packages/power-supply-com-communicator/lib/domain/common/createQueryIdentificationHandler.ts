@@ -1,7 +1,7 @@
 import {
   DomainCommand,
   DomainCommandHandler,
-  DomainCommandHandlerFactoryDependencies
+  DomainCommandHandlerFactoryDependencies,
 } from '../types';
 
 export default function createQueryIdentificationHandler(
@@ -13,6 +13,6 @@ export default function createQueryIdentificationHandler(
     handle: ({ type }: DomainCommand) => {
       debug(`running ${type} command handler...`);
       return runCommand(driver.buildQueryIdentificationCommand());
-    }
+    },
   };
 }

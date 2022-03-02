@@ -5,7 +5,7 @@ describe('it6932a driver - build "Disable output" Command', () => {
     expect(buildDisableOutputCommand()).toEqual({
       raw: 'OUTP OFF\n',
       isAnswerExpected: false,
-      answerTimeoutMS: 3000
+      answerTimeoutMS: 3000,
     });
   });
 });

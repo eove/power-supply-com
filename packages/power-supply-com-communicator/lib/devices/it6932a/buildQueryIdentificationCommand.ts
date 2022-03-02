@@ -4,6 +4,6 @@ export default (): DriverCommand => {
   return {
     raw: `*IDN?\n`,
     answerTimeoutMS: 3000,
-    isAnswerExpected: true
+    isAnswerExpected: true,
   };
 };

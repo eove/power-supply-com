@@ -6,15 +6,15 @@ export default (data: string): FindAnswersResult => {
 
   if (isSeparatorReceivedForLastRaw()) {
     return {
-      answers: raws.filter(r => r).map(r => ({ raw: r })),
-      remaining: ''
+      answers: raws.filter((r) => r).map((r) => ({ raw: r })),
+      remaining: '',
     };
   }
   return {
     answers: _.dropRight(raws)
-      .filter(r => r)
-      .map(r => ({ raw: r })),
-    remaining: _.last(raws) || ''
+      .filter((r) => r)
+      .map((r) => ({ raw: r })),
+    remaining: _.last(raws) || '',
   };
 
   function isSeparatorReceivedForLastRaw() {

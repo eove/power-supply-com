@@ -5,7 +5,7 @@ describe('it6932a driver - build "Get Current" Command', () => {
     expect(buildGetCurrentCommand()).toEqual({
       raw: 'CURR?\n',
       isAnswerExpected: true,
-      answerTimeoutMS: 3000
+      answerTimeoutMS: 3000,
     });
   });
 });

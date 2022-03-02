@@ -5,7 +5,7 @@ describe('it6932a driver - build "Measure Voltage" Command', () => {
     expect(buildMeasureVoltageCommand()).toEqual({
       raw: 'MEAS:VOLT?\n',
       isAnswerExpected: true,
-      answerTimeoutMS: 3000
+      answerTimeoutMS: 3000,
     });
   });
 });

@@ -6,5 +6,5 @@ import { factories as outputFactories } from './output';
 export const commandHandlerFactories = {
   common: commonFactories,
   output: outputFactories,
-  measurements: measurementsFactories
+  measurements: measurementsFactories,
 };

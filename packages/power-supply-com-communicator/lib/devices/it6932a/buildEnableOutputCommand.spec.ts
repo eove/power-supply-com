@@ -5,7 +5,7 @@ describe('it6932a driver - build "Enable output" Command', () => {
     expect(buildEnableOutputCommand()).toEqual({
       raw: 'OUTP ON\n',
       isAnswerExpected: false,
-      answerTimeoutMS: 3000
+      answerTimeoutMS: 3000,
     });
   });
 });
