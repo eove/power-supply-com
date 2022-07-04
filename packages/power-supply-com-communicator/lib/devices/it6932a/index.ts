@@ -1,5 +1,4 @@
 import { Driver } from '../../domain';
-
 import buildDisableOutputCommand from './buildDisableOutputCommand';
 import buildEnableOutputCommand from './buildEnableOutputCommand';
 import buildGetCurrentCommand from './buildGetCurrentCommand';

@@ -1,10 +1,8 @@
 import * as debugLib from 'debug';
 import * as _ from 'lodash';
 import { merge, Observable, Subject } from 'rxjs';
-
 import { createDriver } from './devices';
-import { DomainCommand } from './domain';
-import { commandHandlerFactories } from './domain';
+import { commandHandlerFactories, DomainCommand } from './domain';
 import { createCommandRunner, createTransport, Device } from './tools';
 
 export interface Communicator {

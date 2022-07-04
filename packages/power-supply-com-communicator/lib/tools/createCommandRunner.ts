@@ -12,7 +12,6 @@ import {
   scan,
   timeout,
 } from 'rxjs/operators';
-
 import { Driver, FindAnswersResult } from '../devices';
 import {
   DomainCommand,
