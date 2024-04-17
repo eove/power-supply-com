@@ -6,7 +6,7 @@ import { commandHandlerFactories, DomainCommand } from './domain';
 import { createCommandRunner, createTransport, Device } from './tools';
 
 export interface Communicator {
-  open: (portName: string) => Promise<void>;
+  open: () => Promise<void>;
   close: () => Promise<void>;
   isCommmunicationStarted: () => Promise<boolean>;
   listPorts: () => Promise<Device[]>;
