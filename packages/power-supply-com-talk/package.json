@@ -1,6 +1,6 @@
 {
   "name": "@eove/power-supply-com-talk",
-  "version": "2.1.1",
+  "version": "2.1.2",
   "description": "CLI to talk to power supply devices (it6932a, ...)",
   "main": "powerSupplyTalk.js",
   "bin": {
@@ -30,7 +30,7 @@
   },
   "homepage": "https://github.com/eove/power-suppl-com#readme",
   "dependencies": {
-    "@eove/power-supply-com-communicator": "^2.1.1",
+    "@eove/power-supply-com-communicator": "^2.1.2",
     "commander": "4.1.1",
     "cross-env": "7.0.0",
     "debug": "4.1.1",
