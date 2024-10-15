@@ -73,7 +73,7 @@
     "debug": "4.1.1",
     "lodash": "4.17.21",
     "rxjs": "6.5.5",
-    "serialport": "9.2.8"
+    "serialport": "11.0.1"
   },
   "gitHead": "d149de0b6cb1d689166efde2f570f8a9f9a24a18"
 }
