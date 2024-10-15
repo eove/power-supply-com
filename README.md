@@ -11,7 +11,6 @@ This is a monorepository, subprojects are in [packages](/packages) directory.
 Available packages:
 
 - [power-supply-com-communicator](/packages/power-supply-com-communicator): Facade to communicate with device
-- [power-supply-com-talk](/packages/power-supply-com-talk): CLI to communicate with device
 
 ## For developers
 
