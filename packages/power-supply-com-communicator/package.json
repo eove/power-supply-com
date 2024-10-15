@@ -1,6 +1,6 @@
 {
   "name": "@eove/power-supply-com-communicator",
-  "version": "2.1.2",
+  "version": "3.0.0-dev.0",
   "description": "Communicator to communicate to power supply",
   "main": "build/index.js",
   "types": "build/index.d.ts",
